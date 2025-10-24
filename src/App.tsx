@@ -5,19 +5,22 @@ import AboutSection from './components/AboutSection';
 import FindingsSection from './components/FindingsSection';
 import ReflectionSection from './components/ReflectionSection';
 import TeamSection from './components/TeamSection';
+import CommentSection from './components/CommentSection';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
+import SplashScreen from './components/SplashScreen';
 import { useScrollAnimation } from './hooks/useScrollAnimation';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [showSplash, setShowSplash] = useState(true);
 
   useScrollAnimation();
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'findings', 'reflection', 'team'];
+      const sections = ['home', 'about', 'findings', 'reflection', 'team', 'comments'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -46,6 +49,10 @@ function App() {
     }
   };
 
+  if (showSplash) {
+    return <SplashScreen onComplete={() => setShowSplash(false)} />;
+  }
+
   return (
     <div className="min-h-screen bg-slate-50">
       <Navigation
@@ -60,6 +67,7 @@ function App() {
       <FindingsSection />
       <ReflectionSection />
       <TeamSection />
+      <CommentSection />
       <Footer />
       <BackToTop />
     </div>

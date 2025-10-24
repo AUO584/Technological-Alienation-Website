@@ -13,7 +13,8 @@ export default function Navigation({ isMenuOpen, setIsMenuOpen, activeSection, s
     { id: 'about', label: '研究動機' },
     { id: 'findings', label: '研究結果' },
     { id: 'reflection', label: '反思建議' },
-    { id: 'team', label: '組員心得' }
+    { id: 'team', label: '組員心得' },
+    { id: 'comments', label: '留言區' }
   ];
 
   return (
