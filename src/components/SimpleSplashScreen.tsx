@@ -120,3 +120,4 @@ export default function SimpleSplashScreen({ onComplete }) {
     </div>
   );
 }
+
