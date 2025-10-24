@@ -8,7 +8,7 @@ import TeamSection from './components/TeamSection';
 import SimpleCommentSection from './components/SimpleCommentSection';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
-import SimpleSplashScreen from './components/SimpleSplashScreen';
+import TechSplashScreen from './components/TechSplashScreen';
 import { useScrollAnimation } from './hooks/useScrollAnimation';
 
 function App() {
@@ -50,7 +50,7 @@ function App() {
   };
 
   if (showSplash) {
-    return <SimpleSplashScreen onComplete={() => setShowSplash(false)} />;
+    return <TechSplashScreen onComplete={() => setShowSplash(false)} />;
   }
 
   return (

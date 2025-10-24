@@ -2,7 +2,7 @@ export default function TeamSection() {
   return (
     <section id="team" className="py-20 px-4 bg-slate-50">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-slate-800 text-center mb-12 fade-in-up">
+        <h2 className="text-4xl md:text-5xl font-bold text-slate-800 text-center mb-12">
           組員與心得
         </h2>
 
@@ -99,7 +99,7 @@ export default function TeamSection() {
           </div>
         </div>
 
-        <div className="bg-white p-8 rounded-lg shadow-md border-l-4 border-orange-500 fade-in-up">
+        <div className="bg-white p-8 rounded-lg shadow-md border-l-4 border-orange-500">
           <h3 className="text-2xl font-semibold text-slate-800 mb-4 text-center">
             團隊共同心得
           </h3>
