@@ -1,4 +1,7 @@
 import { Menu, X } from 'lucide-react';
+import ThemeSwitcher from './ThemeSwitcher';
+import LanguageSwitcher from './LanguageSwitcher';
+import Clock from './Clock';
 
 interface NavigationProps {
   isMenuOpen: boolean;
@@ -39,6 +42,12 @@ export default function Navigation({ isMenuOpen, setIsMenuOpen, activeSection, s
                 {item.label}
               </button>
             ))}
+          </div>
+
+          <div className="hidden md:flex items-center gap-3">
+            <Clock />
+            <LanguageSwitcher />
+            <ThemeSwitcher />
           </div>
 
           <button

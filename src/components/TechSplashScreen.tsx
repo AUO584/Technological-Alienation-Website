@@ -40,9 +40,9 @@ export default function TechSplashScreen({ onComplete }) {
           clearInterval(progressInterval);
           return 100;
         }
-        return prev + 2;
+        return prev + 5;
       });
-    }, 50);
+    }, 30);
 
     // 步驟切換動畫
     const stepInterval = setInterval(() => {
@@ -51,13 +51,13 @@ export default function TechSplashScreen({ onComplete }) {
           clearInterval(stepInterval);
           setTimeout(() => {
             setIsVisible(false);
-            setTimeout(onComplete, 500);
-          }, 1500);
+            setTimeout(onComplete, 300);
+          }, 800);
           return prev;
         }
         return prev + 1;
       });
-    }, 2000);
+    }, 1000);
 
     return () => {
       clearInterval(progressInterval);
@@ -68,14 +68,14 @@ export default function TechSplashScreen({ onComplete }) {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black flex items-center justify-center overflow-hidden">
+    <div className="fixed inset-0 z-50 bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center overflow-hidden">
       {/* 科技背景網格 */}
       <div className="absolute inset-0 opacity-20">
         <div className="grid grid-cols-20 grid-rows-20 h-full w-full">
           {[...Array(400)].map((_, i) => (
             <div
               key={i}
-              className="border border-cyan-400/30"
+              className="border border-orange-400/30"
               style={{
                 animationDelay: `${Math.random() * 2}s`,
                 animation: 'pulse 2s infinite'
@@ -90,7 +90,7 @@ export default function TechSplashScreen({ onComplete }) {
         {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="absolute h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse"
+            className="absolute h-px bg-gradient-to-r from-transparent via-orange-400 to-transparent animate-pulse"
             style={{
               top: `${Math.random() * 100}%`,
               left: '0%',
@@ -109,17 +109,17 @@ export default function TechSplashScreen({ onComplete }) {
           <div className="text-8xl mb-4 animate-pulse">
             {steps[currentStep].icon}
           </div>
-          <div className="w-16 h-16 border-2 border-cyan-400 rounded-full mx-auto animate-spin">
-            <div className="w-full h-full border-t-2 border-cyan-400 rounded-full animate-spin"></div>
+          <div className="w-16 h-16 border-2 border-orange-400 rounded-full mx-auto animate-spin">
+            <div className="w-full h-full border-t-2 border-orange-400 rounded-full animate-spin"></div>
           </div>
         </div>
 
         {/* 標題區域 */}
         <div className="space-y-4 mb-8">
-          <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent animate-pulse">
+          <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent animate-pulse">
             {steps[currentStep].title}
           </h1>
-          <h2 className="text-2xl md:text-3xl font-mono text-cyan-400">
+          <h2 className="text-2xl md:text-3xl font-mono text-orange-400">
             {steps[currentStep].subtitle}
           </h2>
           <p className="text-lg text-gray-300 max-w-md mx-auto font-mono">
@@ -129,13 +129,13 @@ export default function TechSplashScreen({ onComplete }) {
 
         {/* 進度條 */}
         <div className="w-80 mx-auto mb-8">
-          <div className="flex justify-between text-sm text-cyan-400 mb-2">
+          <div className="flex justify-between text-sm text-orange-400 mb-2">
             <span>LOADING</span>
             <span>{loadingProgress}%</span>
           </div>
           <div className="w-full bg-gray-800 rounded-full h-2">
             <div 
-              className="bg-gradient-to-r from-cyan-400 to-blue-500 h-2 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-orange-400 to-orange-500 h-2 rounded-full transition-all duration-300"
               style={{ width: `${loadingProgress}%` }}
             ></div>
           </div>
@@ -148,7 +148,7 @@ export default function TechSplashScreen({ onComplete }) {
               key={index}
               className={`w-3 h-3 rounded-full transition-all duration-500 ${
                 index <= currentStep
-                  ? 'bg-cyan-400 shadow-lg shadow-cyan-400/50'
+                  ? 'bg-orange-400 shadow-lg shadow-orange-400/50'
                   : 'bg-gray-600'
               }`}
             />
@@ -156,7 +156,7 @@ export default function TechSplashScreen({ onComplete }) {
         </div>
 
         {/* 科技元素 */}
-        <div className="flex justify-center gap-4 text-cyan-400">
+        <div className="flex justify-center gap-4 text-orange-400">
           <div className="animate-pulse">◉</div>
           <div className="animate-pulse" style={{ animationDelay: '0.5s' }}>◉</div>
           <div className="animate-pulse" style={{ animationDelay: '1s' }}>◉</div>
@@ -164,22 +164,23 @@ export default function TechSplashScreen({ onComplete }) {
       </div>
 
       {/* 角落裝飾 */}
-      <div className="absolute top-4 left-4 text-cyan-400 font-mono text-sm animate-pulse">
+      <div className="absolute top-4 left-4 text-orange-400 font-mono text-sm animate-pulse">
         SYSTEM_INIT
       </div>
-      <div className="absolute top-4 right-4 text-cyan-400 font-mono text-sm animate-pulse">
+      <div className="absolute top-4 right-4 text-orange-400 font-mono text-sm animate-pulse">
         TECH_ANALYSIS
       </div>
-      <div className="absolute bottom-4 left-4 text-cyan-400 font-mono text-sm animate-pulse">
+      <div className="absolute bottom-4 left-4 text-orange-400 font-mono text-sm animate-pulse">
         DATA_PROCESSING
       </div>
-      <div className="absolute bottom-4 right-4 text-cyan-400 font-mono text-sm animate-pulse">
+      <div className="absolute bottom-4 right-4 text-orange-400 font-mono text-sm animate-pulse">
         READY
       </div>
 
       {/* 掃描線效果 */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-400/10 to-transparent animate-pulse"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-400/10 to-transparent animate-pulse"></div>
     </div>
   );
 }
+
 

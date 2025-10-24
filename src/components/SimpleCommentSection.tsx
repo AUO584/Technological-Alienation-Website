@@ -4,7 +4,6 @@ export default function SimpleCommentSection() {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({
     name: '',
-    email: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,7 +32,6 @@ export default function SimpleCommentSection() {
     const comment = {
       id: Date.now().toString(),
       name: newComment.name.trim(),
-      email: newComment.email.trim(),
       message: newComment.message.trim(),
       timestamp: Date.now(),
       likes: 0
@@ -43,7 +41,7 @@ export default function SimpleCommentSection() {
     setComments(updatedComments);
     saveComments(updatedComments);
     
-    setNewComment({ name: '', email: '', message: '' });
+    setNewComment({ name: '', message: '' });
     setShowForm(false);
     setIsSubmitting(false);
   };
@@ -99,32 +97,18 @@ export default function SimpleCommentSection() {
             </button>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    姓名 *
-                  </label>
-                  <input
-                    type="text"
-                    value={newComment.name}
-                    onChange={(e) => setNewComment({ ...newComment, name: e.target.value })}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                    placeholder="請輸入您的姓名"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    電子郵件
-                  </label>
-                  <input
-                    type="email"
-                    value={newComment.email}
-                    onChange={(e) => setNewComment({ ...newComment, email: e.target.value })}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                    placeholder="請輸入您的電子郵件"
-                  />
-                </div>
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">
+                  暱稱 *
+                </label>
+                <input
+                  type="text"
+                  value={newComment.name}
+                  onChange={(e) => setNewComment({ ...newComment, name: e.target.value })}
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  placeholder="請輸入您的暱稱"
+                  required
+                />
               </div>
               
               <div>
@@ -197,11 +181,12 @@ export default function SimpleCommentSection() {
                       👤
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <h4 className="font-semibold text-slate-800">{comment.name}</h4>
-                        <div className="flex items-center gap-1 text-slate-500 text-sm">
-                          <span>📅</span>
-                          <span>{formatTime(comment.timestamp)}</span>
+                      <div className="flex items-start justify-between mb-2">
+                        <div className="flex items-center gap-3">
+                          <h4 className="font-semibold text-slate-800">{comment.name}</h4>
+                        </div>
+                        <div className="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded-full">
+                          {formatTime(comment.timestamp)}
                         </div>
                       </div>
                       <p className="text-slate-700 leading-relaxed mb-3">{comment.message}</p>
