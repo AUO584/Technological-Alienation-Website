@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function SimpleCommentSection() {
+  const { t } = useLanguage();
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({
     name: '',
@@ -74,10 +76,10 @@ export default function SimpleCommentSection() {
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-slate-800 mb-4">
-            分享您的想法
+            {t.comments.title}
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            看完這個專題後，您有什麼想法或感受嗎？歡迎在下方留言與我們分享！
+            {t.comments.subtitle}
           </p>
         </div>
 
@@ -85,7 +87,7 @@ export default function SimpleCommentSection() {
         <div className="bg-white rounded-2xl shadow-xl p-8 mb-8 border border-slate-200">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-6 h-6 text-blue-600">💬</div>
-            <h3 className="text-xl font-semibold text-slate-800">留下您的想法</h3>
+            <h3 className="text-xl font-semibold text-slate-800">{t.comments.formTitle}</h3>
           </div>
 
           {!showForm ? (
@@ -93,34 +95,34 @@ export default function SimpleCommentSection() {
               onClick={() => setShowForm(true)}
               className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
-              開始留言
+              {t.comments.startComment}
             </button>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">
-                  暱稱 *
+                  {t.comments.name} *
                 </label>
                 <input
                   type="text"
                   value={newComment.name}
                   onChange={(e) => setNewComment({ ...newComment, name: e.target.value })}
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="請輸入您的暱稱"
+                  placeholder={t.comments.namePlaceholder}
                   required
                 />
               </div>
               
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">
-                  留言內容 *
+                  {t.comments.message} *
                 </label>
                 <textarea
                   value={newComment.message}
                   onChange={(e) => setNewComment({ ...newComment, message: e.target.value })}
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
                   rows={4}
-                  placeholder="請分享您看完這個專題的想法..."
+                  placeholder={t.comments.messagePlaceholder}
                   required
                 />
               </div>
@@ -134,12 +136,12 @@ export default function SimpleCommentSection() {
                   {isSubmitting ? (
                     <>
                       <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      提交中...
+                      {t.comments.submitting}
                     </>
                   ) : (
                     <>
                       <span>📤</span>
-                      發布留言
+                      {t.comments.submit}
                     </>
                   )}
                 </button>
@@ -148,7 +150,7 @@ export default function SimpleCommentSection() {
                   onClick={() => setShowForm(false)}
                   className="px-6 py-3 border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 transition-all"
                 >
-                  取消
+                  {t.comments.cancel}
                 </button>
               </div>
             </form>
@@ -160,14 +162,14 @@ export default function SimpleCommentSection() {
           <div className="flex items-center gap-3 mb-6">
             <div className="w-5 h-5 text-slate-600">💬</div>
             <h3 className="text-lg font-semibold text-slate-800">
-              所有留言 ({comments.length})
+              {t.comments.allComments} ({comments.length})
             </h3>
           </div>
 
           {comments.length === 0 ? (
             <div className="text-center py-12">
               <div className="w-16 h-16 text-slate-300 mx-auto mb-4 text-6xl">💬</div>
-              <p className="text-slate-500 text-lg">還沒有留言，成為第一個分享想法的人吧！</p>
+              <p className="text-slate-500 text-lg">{t.comments.noComments}</p>
             </div>
           ) : (
             <div className="space-y-4">

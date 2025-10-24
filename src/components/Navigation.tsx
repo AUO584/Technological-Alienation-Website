@@ -2,6 +2,7 @@ import { Menu, X } from 'lucide-react';
 import ThemeSwitcher from './ThemeSwitcher';
 import LanguageSwitcher from './LanguageSwitcher';
 import Clock from './Clock';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface NavigationProps {
   isMenuOpen: boolean;
@@ -11,13 +12,15 @@ interface NavigationProps {
 }
 
 export default function Navigation({ isMenuOpen, setIsMenuOpen, activeSection, scrollToSection }: NavigationProps) {
+  const { t } = useLanguage();
+  
   const navItems = [
-    { id: 'home', label: '首頁' },
-    { id: 'about', label: '研究動機' },
-    { id: 'findings', label: '研究結果' },
-    { id: 'reflection', label: '反思建議' },
-    { id: 'team', label: '組員心得' },
-    { id: 'comments', label: '留言區' }
+    { id: 'home', label: t.nav.home },
+    { id: 'about', label: t.nav.about },
+    { id: 'findings', label: t.nav.findings },
+    { id: 'reflection', label: t.nav.reflection },
+    { id: 'team', label: t.nav.team },
+    { id: 'comments', label: t.nav.comments }
   ];
 
   return (

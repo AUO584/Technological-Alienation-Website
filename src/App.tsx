@@ -9,6 +9,7 @@ import SimpleCommentSection from './components/SimpleCommentSection';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import TechSplashScreen from './components/TechSplashScreen';
+import { LanguageProvider } from './contexts/LanguageContext';
 import { useScrollAnimation } from './hooks/useScrollAnimation';
 
 function App() {
@@ -54,23 +55,25 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <Navigation
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
-        activeSection={activeSection}
-        scrollToSection={scrollToSection}
-      />
+    <LanguageProvider>
+      <div className="min-h-screen bg-slate-50">
+        <Navigation
+          isMenuOpen={isMenuOpen}
+          setIsMenuOpen={setIsMenuOpen}
+          activeSection={activeSection}
+          scrollToSection={scrollToSection}
+        />
 
-      <HomeSection scrollToSection={scrollToSection} />
-      <AboutSection />
-      <FindingsSection />
-      <ReflectionSection />
-      <TeamSection />
-      <SimpleCommentSection />
-      <Footer />
-      <BackToTop />
-    </div>
+        <HomeSection scrollToSection={scrollToSection} />
+        <AboutSection />
+        <FindingsSection />
+        <ReflectionSection />
+        <TeamSection />
+        <SimpleCommentSection />
+        <Footer />
+        <BackToTop />
+      </div>
+    </LanguageProvider>
   );
 }
 

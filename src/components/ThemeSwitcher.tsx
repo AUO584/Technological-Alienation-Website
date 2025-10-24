@@ -16,6 +16,19 @@ export default function ThemeSwitcher() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     setTheme(savedTheme);
     applyTheme(savedTheme);
+    
+    // 監聽主題變化
+    const handleThemeChange = (e: CustomEvent) => {
+      const newTheme = e.detail;
+      setTheme(newTheme);
+      applyTheme(newTheme);
+    };
+    
+    window.addEventListener('themeChanged', handleThemeChange as EventListener);
+    
+    return () => {
+      window.removeEventListener('themeChanged', handleThemeChange as EventListener);
+    };
   }, []);
 
   const applyTheme = (themeName: string) => {
@@ -28,6 +41,9 @@ export default function ThemeSwitcher() {
     setTheme(themeName);
     applyTheme(themeName);
     setIsOpen(false);
+    
+    // 觸發主題變化事件
+    window.dispatchEvent(new CustomEvent('themeChanged', { detail: themeName }));
   };
 
   return (

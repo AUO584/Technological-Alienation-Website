@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function LanguageSwitcher() {
-  const [language, setLanguage] = useState('zh-TW');
+  const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
 
   const languages = [
@@ -12,17 +13,9 @@ export default function LanguageSwitcher() {
     { code: 'ko', label: '한국어', flag: '🇰🇷' }
   ];
 
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') || 'zh-TW';
-    setLanguage(savedLanguage);
-  }, []);
-
   const handleLanguageChange = (langCode: string) => {
-    setLanguage(langCode);
-    localStorage.setItem('language', langCode);
+    setLanguage(langCode as any);
     setIsOpen(false);
-    // 這裡可以觸發語言切換的邏輯
-    window.dispatchEvent(new CustomEvent('languageChanged', { detail: langCode }));
   };
 
   const currentLanguage = languages.find(lang => lang.code === language);
