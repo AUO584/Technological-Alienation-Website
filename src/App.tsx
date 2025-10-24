@@ -5,10 +5,10 @@ import AboutSection from './components/AboutSection';
 import FindingsSection from './components/FindingsSection';
 import ReflectionSection from './components/ReflectionSection';
 import TeamSection from './components/TeamSection';
-import CommentSection from './components/CommentSection';
+import SimpleCommentSection from './components/SimpleCommentSection';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
-import SplashScreen from './components/SplashScreen';
+import SimpleSplashScreen from './components/SimpleSplashScreen';
 import { useScrollAnimation } from './hooks/useScrollAnimation';
 
 function App() {
@@ -50,7 +50,7 @@ function App() {
   };
 
   if (showSplash) {
-    return <SplashScreen onComplete={() => setShowSplash(false)} />;
+    return <SimpleSplashScreen onComplete={() => setShowSplash(false)} />;
   }
 
   return (
@@ -67,7 +67,7 @@ function App() {
       <FindingsSection />
       <ReflectionSection />
       <TeamSection />
-      <CommentSection />
+      <SimpleCommentSection />
       <Footer />
       <BackToTop />
     </div>

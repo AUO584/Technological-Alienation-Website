@@ -1,17 +1,7 @@
 import { useState, useEffect } from 'react';
-import { MessageCircle, Send, Heart, User, Calendar } from 'lucide-react';
 
-interface Comment {
-  id: string;
-  name: string;
-  email: string;
-  message: string;
-  timestamp: number;
-  likes: number;
-}
-
-export default function CommentSection() {
-  const [comments, setComments] = useState<Comment[]>([]);
+export default function SimpleCommentSection() {
+  const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({
     name: '',
     email: '',
@@ -29,18 +19,18 @@ export default function CommentSection() {
   }, []);
 
   // 儲存留言到本地存儲
-  const saveComments = (updatedComments: Comment[]) => {
+  const saveComments = (updatedComments) => {
     localStorage.setItem('website-comments', JSON.stringify(updatedComments));
   };
 
   // 提交新留言
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!newComment.name.trim() || !newComment.message.trim()) return;
 
     setIsSubmitting(true);
     
-    const comment: Comment = {
+    const comment = {
       id: Date.now().toString(),
       name: newComment.name.trim(),
       email: newComment.email.trim(),
@@ -59,7 +49,7 @@ export default function CommentSection() {
   };
 
   // 點讚功能
-  const handleLike = (commentId: string) => {
+  const handleLike = (commentId) => {
     const updatedComments = comments.map(comment =>
       comment.id === commentId
         ? { ...comment, likes: comment.likes + 1 }
@@ -70,7 +60,7 @@ export default function CommentSection() {
   };
 
   // 格式化時間
-  const formatTime = (timestamp: number) => {
+  const formatTime = (timestamp) => {
     const date = new Date(timestamp);
     return date.toLocaleString('zh-TW', {
       year: 'numeric',
@@ -84,19 +74,19 @@ export default function CommentSection() {
   return (
     <section id="comments" className="py-16 bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="max-w-4xl mx-auto px-4">
-        <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-4xl font-bold text-slate-800 mb-4 animate-bounce-in">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-slate-800 mb-4">
             分享您的想法
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto animate-slide-in-left">
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             看完這個專題後，您有什麼想法或感受嗎？歡迎在下方留言與我們分享！
           </p>
         </div>
 
         {/* 留言表單 */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-8 border border-slate-200 animate-scale-in">
+        <div className="bg-white rounded-2xl shadow-xl p-8 mb-8 border border-slate-200">
           <div className="flex items-center gap-3 mb-6">
-            <MessageCircle className="w-6 h-6 text-blue-600 animate-float" />
+            <div className="w-6 h-6 text-blue-600">💬</div>
             <h3 className="text-xl font-semibold text-slate-800">留下您的想法</h3>
           </div>
 
@@ -164,7 +154,7 @@ export default function CommentSection() {
                     </>
                   ) : (
                     <>
-                      <Send className="w-4 h-4" />
+                      <span>📤</span>
                       發布留言
                     </>
                   )}
@@ -184,7 +174,7 @@ export default function CommentSection() {
         {/* 留言列表 */}
         <div className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
-            <MessageCircle className="w-5 h-5 text-slate-600" />
+            <div className="w-5 h-5 text-slate-600">💬</div>
             <h3 className="text-lg font-semibold text-slate-800">
               所有留言 ({comments.length})
             </h3>
@@ -192,7 +182,7 @@ export default function CommentSection() {
 
           {comments.length === 0 ? (
             <div className="text-center py-12">
-              <MessageCircle className="w-16 h-16 text-slate-300 mx-auto mb-4" />
+              <div className="w-16 h-16 text-slate-300 mx-auto mb-4 text-6xl">💬</div>
               <p className="text-slate-500 text-lg">還沒有留言，成為第一個分享想法的人吧！</p>
             </div>
           ) : (
@@ -200,18 +190,17 @@ export default function CommentSection() {
               {comments.map((comment, index) => (
                 <div
                   key={comment.id}
-                  className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 animate-slide-in-right"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300"
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold">
-                      <User className="w-5 h-5" />
+                      👤
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <h4 className="font-semibold text-slate-800">{comment.name}</h4>
                         <div className="flex items-center gap-1 text-slate-500 text-sm">
-                          <Calendar className="w-4 h-4" />
+                          <span>📅</span>
                           <span>{formatTime(comment.timestamp)}</span>
                         </div>
                       </div>
@@ -220,7 +209,7 @@ export default function CommentSection() {
                         onClick={() => handleLike(comment.id)}
                         className="flex items-center gap-2 text-slate-500 hover:text-red-500 transition-colors"
                       >
-                        <Heart className="w-4 h-4" />
+                        <span>❤️</span>
                         <span>{comment.likes}</span>
                       </button>
                     </div>

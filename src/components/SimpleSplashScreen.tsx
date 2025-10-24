@@ -1,35 +1,30 @@
 import { useState, useEffect } from 'react';
-import { Sparkles, MessageCircle, Users, Lightbulb, Heart } from 'lucide-react';
 
-interface SplashScreenProps {
-  onComplete: () => void;
-}
-
-export default function SplashScreen({ onComplete }: SplashScreenProps) {
+export default function SimpleSplashScreen({ onComplete }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
 
   const steps = [
     {
-      icon: <Sparkles className="w-16 h-16 text-yellow-400" />,
+      icon: '✨',
       title: "歡迎來到",
       subtitle: "科技疏離專題網站",
       description: "探索科技如何影響人際關係"
     },
     {
-      icon: <MessageCircle className="w-16 h-16 text-blue-500" />,
+      icon: '💬',
       title: "分享您的想法",
       subtitle: "與我們互動",
       description: "在留言區分享您的感受與想法"
     },
     {
-      icon: <Users className="w-16 h-16 text-green-500" />,
+      icon: '👥',
       title: "團隊合作",
       subtitle: "學術專題",
       description: "由溝通與表達課程團隊精心製作"
     },
     {
-      icon: <Lightbulb className="w-16 h-16 text-purple-500" />,
+      icon: '💡',
       title: "深度思考",
       subtitle: "科技與人性",
       description: "讓我們一起思考科技對生活的影響"
@@ -77,7 +72,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
       {/* 主要內容 */}
       <div className="relative z-10 text-center text-white">
         <div className="mb-8">
-          <div className="animate-bounce">
+          <div className="animate-bounce text-8xl">
             {steps[currentStep].icon}
           </div>
         </div>
@@ -115,18 +110,10 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
       </div>
 
       {/* 裝飾性元素 */}
-      <div className="absolute top-10 left-10 animate-pulse">
-        <Heart className="w-8 h-8 text-pink-400" />
-      </div>
-      <div className="absolute top-20 right-20 animate-bounce">
-        <Sparkles className="w-6 h-6 text-yellow-400" />
-      </div>
-      <div className="absolute bottom-20 left-20 animate-pulse">
-        <MessageCircle className="w-6 h-6 text-blue-400" />
-      </div>
-      <div className="absolute bottom-10 right-10 animate-bounce">
-        <Users className="w-8 h-8 text-green-400" />
-      </div>
+      <div className="absolute top-10 left-10 animate-pulse text-4xl">❤️</div>
+      <div className="absolute top-20 right-20 animate-bounce text-3xl">✨</div>
+      <div className="absolute bottom-20 left-20 animate-pulse text-3xl">💬</div>
+      <div className="absolute bottom-10 right-10 animate-bounce text-4xl">👥</div>
 
       {/* 漸變邊框效果 */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-pulse"></div>
