@@ -4,7 +4,7 @@ export default function FindingsSection() {
   return (
     <section id="findings" className="py-20 px-4 bg-slate-50">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-center justify-center mb-12 fade-in-up">
+        <div className="flex items-center justify-center mb-12">
           <Lightbulb className="text-orange-500 mr-3" size={40} />
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800">
             觀察與發現
@@ -12,7 +12,7 @@ export default function FindingsSection() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div className="bg-white p-8 rounded-lg shadow-md border border-slate-200 hover:shadow-xl transition-shadow fade-in-up">
+          <div className="bg-white p-8 rounded-lg shadow-md border border-slate-200 hover:shadow-xl transition-shadow">
             <Smartphone className="text-orange-500 mb-4" size={36} />
             <h3 className="text-2xl font-semibold text-slate-800 mb-4">
               我們的生活觀察
@@ -39,7 +39,7 @@ export default function FindingsSection() {
             </div>
           </div>
 
-          <div className="bg-white p-8 rounded-lg shadow-md border border-slate-200 hover:shadow-xl transition-shadow fade-in-up">
+          <div className="bg-white p-8 rounded-lg shadow-md border border-slate-200 hover:shadow-xl transition-shadow">
             <MessageCircle className="text-orange-500 mb-4" size={36} />
             <h3 className="text-2xl font-semibold text-slate-800 mb-4">
               同儕經驗與感受

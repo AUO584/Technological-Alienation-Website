@@ -182,3 +182,4 @@ export default function TechSplashScreen({ onComplete }) {
     </div>
   );
 }
+

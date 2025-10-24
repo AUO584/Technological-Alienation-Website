@@ -4,20 +4,20 @@ export default function ReflectionSection() {
   return (
     <section id="reflection" className="py-20 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-center justify-center mb-12 fade-in-up">
+        <div className="flex items-center justify-center mb-12">
           <Users className="text-orange-500 mr-3" size={40} />
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800">
             反思與改善建議
           </h2>
         </div>
 
-        <div className="text-center mb-12 fade-in-up">
+        <div className="text-center mb-12">
           <blockquote className="text-2xl md:text-3xl font-light text-slate-700 italic">
             「讓科技成為橋樑，而不是牆。」
           </blockquote>
         </div>
 
-        <div className="flex justify-center mb-8 fade-in-up">
+        <div className="flex justify-center mb-8">
           <img
             src="https://images.pexels.com/photos/1054713/pexels-photo-1054713.jpeg?auto=compress&cs=tinysrgb&w=800"
             alt="People connecting"
