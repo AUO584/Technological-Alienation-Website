@@ -1,0 +1,276 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 1.2s ease-in-out;
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out;
+  }
+
+  .animate-bounce-in {
+    animation: bounceIn 0.8s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* 主題變數 */
+:root {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-light: #ffffff;
+  --accent-color: #f97316;
+  --border-color: #e2e8f0;
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --nav-text: #1e293b;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-light: #f1f5f9;
+  --accent-color: #f97316;
+  --border-color: #334155;
+  --nav-bg: rgba(15, 23, 42, 0.95);
+  --nav-text: #f1f5f9;
+}
+
+[data-theme="orange"] {
+  --bg-primary: #ea580c;
+  --bg-secondary: #c2410c;
+  --text-primary: #ffffff;
+  --text-secondary: #fed7aa;
+  --text-light: #ffffff;
+  --accent-color: #fff7ed;
+  --border-color: #fed7aa;
+  --nav-bg: rgba(234, 88, 12, 0.95);
+  --nav-text: #ffffff;
+}
+
+[data-theme="blue"] {
+  --bg-primary: #2563eb;
+  --bg-secondary: #1d4ed8;
+  --text-primary: #ffffff;
+  --text-secondary: #dbeafe;
+  --text-light: #ffffff;
+  --accent-color: #eff6ff;
+  --border-color: #93c5fd;
+  --nav-bg: rgba(37, 99, 235, 0.95);
+  --nav-text: #ffffff;
+}
+
+[data-theme="green"] {
+  --bg-primary: #16a34a;
+  --bg-secondary: #15803d;
+  --text-primary: #ffffff;
+  --text-secondary: #dcfce7;
+  --text-light: #ffffff;
+  --accent-color: #f0fdf4;
+  --border-color: #86efac;
+  --nav-bg: rgba(22, 163, 74, 0.95);
+  --nav-text: #ffffff;
+}
+
+/* 應用主題樣式 */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.bg-slate-50 {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.bg-white {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+.text-slate-800 {
+  color: var(--text-primary) !important;
+}
+
+.text-slate-600, .text-slate-700 {
+  color: var(--text-secondary) !important;
+}
+
+.border-slate-200 {
+  border-color: var(--border-color) !important;
+}
+
+.text-orange-500 {
+  color: var(--accent-color) !important;
+}
+
+.bg-orange-500 {
+  background-color: var(--accent-color) !important;
+}
+
+.bg-orange-50 {
+  background-color: var(--bg-primary) !important;
+}
+
+.text-orange-900, .text-orange-700 {
+  color: var(--text-primary) !important;
+}
+
+.bg-blue-50, .bg-green-50 {
+  background-color: var(--bg-primary) !important;
+}
+
+.text-blue-900, .text-green-900 {
+  color: var(--text-primary) !important;
+}
+
+/* Reflection section gradient backgrounds */
+.bg-gradient-to-br {
+  color: var(--text-primary) !important;
+}
+
+.from-orange-50 {
+  --tw-gradient-from: var(--bg-primary) !important;
+}
+
+.from-blue-50 {
+  --tw-gradient-from: var(--bg-primary) !important;
+}
+
+.from-green-50 {
+  --tw-gradient-from: var(--bg-primary) !important;
+}
+
+.to-white {
+  --tw-gradient-to: var(--bg-secondary) !important;
+}
+
+/* Navigation bar theme support */
+nav {
+  background-color: var(--nav-bg) !important;
+}
+
+nav .text-slate-800, nav .text-slate-600 {
+  color: var(--nav-text) !important;
+}
