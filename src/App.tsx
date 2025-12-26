@@ -3,25 +3,24 @@ import Navigation from './components/Navigation';
 import HomeSection from './components/HomeSection';
 import AboutSection from './components/AboutSection';
 import FindingsSection from './components/FindingsSection';
+import TechAlienationGame from './components/TechAlienationGame';
 import ReflectionSection from './components/ReflectionSection';
 import TeamSection from './components/TeamSection';
 import SimpleCommentSection from './components/SimpleCommentSection';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
-import TechSplashScreen from './components/TechSplashScreen';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { useScrollAnimation } from './hooks/useScrollAnimation';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [showSplash, setShowSplash] = useState(true);
 
   useScrollAnimation();
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'findings', 'reflection', 'team', 'comments'];
+      const sections = ['home', 'about', 'findings', 'game', 'reflection', 'team', 'comments'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -50,10 +49,6 @@ function App() {
     }
   };
 
-  if (showSplash) {
-    return <TechSplashScreen onComplete={() => setShowSplash(false)} />;
-  }
-
   return (
     <LanguageProvider>
       <div className="min-h-screen bg-slate-50">
@@ -67,6 +62,7 @@ function App() {
         <HomeSection scrollToSection={scrollToSection} />
         <AboutSection />
         <FindingsSection />
+        <TechAlienationGame />
         <ReflectionSection />
         <TeamSection />
         <SimpleCommentSection />

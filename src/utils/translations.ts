@@ -4,6 +4,7 @@ export const translations = {
       home: '首頁',
       about: '研究動機',
       findings: '研究結果',
+      game: '互動遊戲',
       reflection: '反思建議',
       team: '組員心得',
       comments: '留言區'
@@ -87,6 +88,7 @@ export const translations = {
       home: '首页',
       about: '研究动机',
       findings: '研究结果',
+      game: '互动游戏',
       reflection: '反思建议',
       team: '组员心得',
       comments: '留言区'
@@ -170,6 +172,7 @@ export const translations = {
       home: 'Home',
       about: 'Motivation',
       findings: 'Findings',
+      game: 'Interactive Game',
       reflection: 'Reflection',
       team: 'Team',
       comments: 'Comments'
@@ -253,6 +256,7 @@ export const translations = {
       home: 'ホーム',
       about: '研究動機',
       findings: '研究結果',
+      game: 'インタラクティブゲーム',
       reflection: '反省と提案',
       team: 'メンバー',
       comments: 'コメント'
@@ -336,6 +340,7 @@ export const translations = {
       home: '홈',
       about: '연구 동기',
       findings: '연구 결과',
+      game: '인터랙티브 게임',
       reflection: '반성과 제안',
       team: '팀원',
       comments: '댓글'
